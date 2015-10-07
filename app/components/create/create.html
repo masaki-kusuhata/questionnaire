@@ -1,0 +1,42 @@
+<div>
+  <div class="form-group">
+    <label for="title">アンケート名を入力してください。</label>
+    <input type="text" name="title" value="" id="title" class="form-control" placeholder="AngularJSハンズオン">
+  </div>
+</div>
+<div>
+  <div class="form-group">
+    <label for="detail">アンケート概要を入力してください。</label>
+    <textarea name="detail" rows="4" cols="40" id="detail" class="form-control" placeholder="本日はお疲れ様でした。"></textarea>
+  </div>
+</div>
+
+<button type="button" name="button" class="btn" ng-link="createask">項目追加</button>
+
+<div class="">
+
+  <div class="form-group" ng-repeat="question in create.questions track by $index">
+    <label for="">質問文を入力してください</label>
+    <textarea name="" rows="2" cols="40" class="form-control" ng-model="question.ask"></textarea>
+
+    <div class="form-group" ng-if="question.pattern == 2">
+      <span class="label label-default">あ</span>
+      <input type="radio" name="name" value="" class="radio-inline">
+      <span class="label label-default">い</span>
+      <input type="radio" name="name" value="" class="radio-inline">
+      <span class="label label-default">う</span>
+      <input type="radio" name="name" value="" class="radio-inline">
+    </div>
+
+    <div class="form-group" ng-if="question.pattern == 3">
+      <span class="label label-default">あ</span>
+      <input type="checkbox" name="name" value="" class="checkbox-inline">
+      <span class="label label-default">い</span>
+      <input type="checkbox" name="name" value="" class="checkbox-inline">
+      <span class="label label-default">う</span>
+      <input type="checkbox" name="name" value="" class="checkbox-inline">
+    </div>
+
+  </div>
+
+</div>

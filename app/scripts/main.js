@@ -12,7 +12,9 @@
       'questionnaire.config',
       'questionnaire.components.home',
       'questionnaire.components.about',
-      'questionnaire.components.contact'
+      'questionnaire.components.contact',
+      'questionnaire.components.create',
+      'questionnaire.components.createask'
     ])
     .controller('AppController', AppController);
 
@@ -20,7 +22,9 @@
     {path: '/',       redirectTo: '/home'},
     {path: '/home',    component: 'home'},
     {path: '/about',   component: 'about'},
-    {path: '/contact', component: 'contact'}
+    {path: '/contact', component: 'contact'},
+    {path: '/create', component: 'create'},
+    {path: '/createask', component: 'createask'}
   ];
 
   AppController.$inject = [];
