@@ -70,10 +70,24 @@
   };
 
   CreateController.prototype.add = function() {
+
+    var items = [];
+    for (var i = 0; i < vm.items; i++) {
+      items.push({
+        no: null,
+        answer: ''
+      });
+    }
+
     vm.questions.push({
-      ask: '質問１',
-      pattern: 1
+      no: null,
+      answerType: vm.answerType,
+      question: '',
+      items: items
     });
+
+    console.log(vm.questions);
+
   };
 
   /**
