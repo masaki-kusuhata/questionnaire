@@ -44,6 +44,7 @@
     vm = this;
 
     vm.questions = [];
+    vm.answerType = 0;
 
   };
 
@@ -69,6 +70,10 @@
     vm = this;
   };
 
+  /**
+   * 新規質問項目の追加
+   * @return {[type]} [description]
+   */
   CreateController.prototype.add = function() {
 
     var items = [];
@@ -85,9 +90,32 @@
       question: '',
       items: items
     });
+  };
 
+  /**
+   * [function description]
+   * @return {[type]} [description]
+   */
+  CreateController.prototype.questionDelete = function(index) {
+    vm.questions.splice(index, 1);
+  };
+
+  /**
+   * 質問タイプ選択時のイベント
+   * @return {[type]}       [description]
+   */
+  CreateController.prototype.selectAnswerType = function() {
+    if (vm.answerType === '0') {
+      vm.items = 0;
+    }
+  };
+
+  /**
+   * アンケート作成の完了
+   * @return {[type]}       [description]
+   */
+  CreateController.prototype.complete = function() {
     console.log(vm.questions);
-
   };
 
   /**

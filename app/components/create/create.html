@@ -11,6 +11,7 @@
   <input type="hidden" name="name" ng-init="question.no=$index" ng-model="question.no" >
   <div class="form-group">
     <label class="label label-default" for="title">
+      <button class="btn btn-danger btn-sm" type="button" name="button" ng-click="create.questionDelete($index)">×</button>
       Q{{$index+1}} 質問を入力してください。
       （
       <span ng-if="question.answerType==0">フリーワード回答</span>
@@ -25,20 +26,25 @@
     <ol>
       <li ng-repeat="item in question.items track by $index">
         <input type="hidden" name="name" value="" ng-model="item.no" ng-init="item.no=$index">
-        <input type="text" name="name" value="" ng-model="item.answer">
+        <input type="text" name="name" value="" ng-model="item.answer" placeholder="選択肢{{$index+1}}">
       </li>
     </ol>
   </div>
 </div>
 
+<label class="radio-inline">
+  <input type="radio" name="optradio" ng-model="create.answerType" ng-change="create.selectAnswerType()" value="0">フリーワード回答
+</label>
+<label class="radio-inline">
+  <input type="radio" name="optradio" ng-model="create.answerType" ng-change="create.selectAnswerType()" value="1">複数選択回答
+</label>
+<label class="radio-inline">
+  <input type="radio" name="optradio" ng-model="create.answerType" ng-change="create.selectAnswerType()" value="2">単一選択回答
+</label>
 
-<div class="radio">
-  <label><input type="radio" name="optradio" ng-model="create.answerType" value="0">フリーワード回答</label>
-  <label><input type="radio" name="optradio" ng-model="create.answerType" value="1">複数選択回答</label>
-  <label><input type="radio" name="optradio" ng-model="create.answerType" value="2">単一選択回答</label>
+<div class="form-group" ng-if="create.answerType!=0">
+  <label class="label label-default" for="title">選択肢の数を入力してください。</label>
+  <input type="number" min="2" class="form-control" ng-model="create.items" ng-init="create.items=2" ngRequired="true">
 </div>
-<div class="form-group">
-  <label class="label label-default" for="title">回答項目の数を入力してください。</label>
-  <input type="text" class="form-control" ng-model="create.items" ng-value="1">
-</div>
-<button type="button" name="button" class="btn btn-default" ng-click="create.add()">項目追加</button>
+<button type="button" name="button" class="btn btn-info" ng-click="create.add()">質問追加</button>
+<button type="button" name="button" class="btn btn-success" ng-click="create.complete()">入力完了</button>
